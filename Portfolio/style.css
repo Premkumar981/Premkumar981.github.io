@@ -38,3 +38,123 @@ header {
 .nav-links a:hover {
     color: #00ffff;
 }
+
+.my-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .my-info {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.left {
+    max-width: 500px;
+    padding-left: 50px;
+}
+
+.left h1 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.left p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.left button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.left button:hover {
+    background-color: #0056b3;
+}
+
+.right-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.services {
+    padding: 50px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.service-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .service-blocks {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.service {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.service p {
+    font-size: 16px;
+    color: #444;
+}
+
+.site-footer {
+    background-color: #222;
+    color: #eee;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 60px;
+    font-family: Arial, sans-serif;
+}
+
+.site-footer p {
+    margin: 5px 0;
+    font-size: 15px;
+}
