@@ -31,7 +31,7 @@ const registerForm = () => {
 
 const showHome = () => {
     const str = `<div>
-    <h3>Welcome</h3>
+    <h3>Welcome! This is the home page...</h3>
     <p><button onclick='loginForm()'>Logout</button></p>
     `
     root.innerHTML = str + "</div>"
