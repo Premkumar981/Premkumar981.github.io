@@ -106,3 +106,92 @@ db.marks.aggregate([
         Avg:{$avg:"$score"}
     }}
 ]).sort({_id:1})
+
+db.employees.aggregate([
+  {$project:{_id:0,name:1,dept:"$department"}}
+])
+// db.employees.aggregate([{$project:{_id:0,name:1,dept:"$department"}}])
+
+db.employees.aggregate([
+  {$project:{_id:0,name:1,salary:1}}
+])
+db.employees.aggregate([{$project:{_id:0,name:1,salary:1}}])
+db.employees.aggregate([{$project:{_id:0,name:1,salary:1,Grade:"Grade A"}}])
+
+db.employees.aggregate([
+  {$project:{
+    _id:0,name:1,
+    salary:1,
+    Grade:{$cond:[{$gte:["$salary",2000]},"Grade A","Grade B"]}
+  }}
+])
+db.employees.aggregate([{$project:{_id:0,name:1,salary:1,Grade:{$cond:[{$gte:["$salary",2000]},"Grade A","Grade B"]}}}])
+db.employees.aggregate([{$project:{_id:0,name:1,salary:1,Grade:{$cond:[{$gt:["$salary",3000]},"Grade A","Grade B"]}}}])
+
+db.employees.aggregate([
+  {$project:{
+    _id:0,name:1,
+    salary:1,
+    Grade:{$cond:{if:{$gt:["$salary:",3000]},then:"Grade A",else:"Grade B"}}
+  }}
+])
+db.employees.aggregate([{$project:{_id:0,name:1,salary:1,Grade:{$cond:{if:{$gt:["$salary:",3000]},then:"Grade A",else:"Grade B"}}}}])
+
+db.employees.aggregate([{
+    $project: {
+      _id: 0,
+      name: 1,
+      salary: 1,
+      strSalary: {
+        $cond: [
+          { $eq: ["$department", "IT"] },
+          "2500",
+          "1000"
+        ]
+      }
+    }
+  }
+]);
+db.employees.aggregate([{$project: {_id: 0,name: 1,salary: 1,strSalary: {$cond: [{ $eq: ["$department", "IT"] },"2500","1000"]}}}]);
+
+db.employees.aggregate([
+  {$group: {_id: "$department", total: {$sum: "$strSalary"}}}
+])
+db.employees.aggregate([{$group: {_id: "$department", total: {$sum: "$strSalary"}}}])
+
+db.employees.aggregate([
+  {$project:{
+    _id:0,
+    name:1,
+    department:1,
+    Sal:{$convert:{input:"$strSalary",to:"int"}}
+  }},
+  {$group: {_id: "$department", total: {$sum: "$Sal"}}}
+])
+db.employees.aggregate([{$project:{_id:0,name:1,department:1,Sal:{$convert:{input:"$strSalary",to:"int"}}}},{$group: {_id: "$department", total: {$sum: "$Sal"}}}])
+
+db.employees.aggregate([
+  {$project:{
+    _id:0,
+    name:1,
+    department:1,
+    Sal:{$convert:{input:"$strSalary",to:"int"}}
+  }},
+  {$group: {_id: "$department", total: {$sum: "$Sal"}}},
+  {$out: "depWiseSalary"}
+])
+db.employees.aggregate([{$project:{_id:0,name:1,department:1,Sal:{$convert:{input:"$strSalary",to:"int"}}}},{$group: {_id: "$department", total: {$sum: "$Sal"}}},{$out: "depWiseSalary"}])
+
+db.createView("depWiseSalaryView","employees",[
+  {$project:{
+    _id:0,
+    name:1,
+    salary:1,
+    department:1,
+    Sal:{$convert:{input:"$strSalary",to:"int"}}}},
+  { $group: { _id: "$department", total: { $sum: "$Sal" } } },
+]);
+
+db.depWiseSalaryView.drop()
+
+db.createView("viewName","collectionname",[])
