@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.header-row {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-row h1 {
+  font-size: 28px;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.header-row ul {
+  list-style: none;
+}
+
+.header-row li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.header-row a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.header-row a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #00ffe7;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.header-row a:hover::after {
+  width: 100%;
+}
+
+.row {
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.row h1 {
+  font-size: 36px;
+  color: #00ffe7;
+}
+
+.row h3, .row h2 {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.row p {
+  line-height: 1.7;
+  color: #cfcfcf;
+}
+
+.row .box {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 10px;
+  flex: 1;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.row .box:hover {
+  transform: translateY(-5px);
+}
+
+.row img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 30px rgba(0, 255, 231, 0.4);
+  display: block;
+  margin: auto;
+  transition: transform 0.4s ease;
+}
+
+.row img:hover {
+  transform: scale(1.08);
+}
+
+button {
+  background: linear-gradient(135deg, #00ffe7, #007cf0);
+  color: black;
+  padding: 12px 24px;
+  margin: 10px 10px 0 0;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #00d4ff, #007cf0);
+}
+
+input, textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  outline: none;
+  font-size: 14px;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #aaa;
+}
+
+#projects, #services, #contact {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-top: 1px solid #222;
+}
