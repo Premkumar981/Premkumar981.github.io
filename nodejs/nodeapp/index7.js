@@ -1,0 +1,44 @@
+import express from 'express';
+
+const app = express();
+
+app.listen(9999, () => {
+    console.log("Server started on port 9999");
+});
+
+app.use(express.json()); // Middleware to parse JSON body
+let products = []
+
+app.post("/", (req, res) => {
+    try{
+    const {id, name, price} = req.body;
+    const found = products.find(product=>product.id === id);
+    if (found) res.send("Product already exists");
+    else {
+        products.push({
+            id,name,price
+        });
+        res.status(201).json({message: "Product created"});
+    }
+} catch (err) {
+    res.status(400).json({ message: "Something went wrong" });
+}
+})
+
+app.get("/", (req, res) => {
+    res.json(products);
+})
+
+app.delete("/:id", (req, res) => {
+    try {
+        const id = Number(req.params.id);
+        products = products.filter((value) => value.id !== id);
+        res.json("Product deleted");
+    } catch (err) {
+        res.json({ message: "Something went wrong" });
+    }
+});
+
+app.patch("/", (req, res) => {
+    res.send(req.body);
+})
