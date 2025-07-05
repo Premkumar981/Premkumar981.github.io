@@ -38,7 +38,3 @@ app.delete("/:id", (req, res) => {
         res.json({ message: "Something went wrong" });
     }
 });
-
-app.patch("/", (req, res) => {
-    res.send(req.body);
-})
